@@ -42,7 +42,7 @@ body, html {
 }
 
 .slider-wraper {
-    transition: var(--transition);
+    transition: var(--transition)!important;
     will-change: transform;
 }
 
@@ -50,6 +50,7 @@ body, html {
     max-height: 75vh;
     overflow: hidden;
     cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .slider-img {
@@ -60,4 +61,58 @@ body, html {
     left: -100%;
     transition: var(--transition)!important;
     will-change: transform;
+}
+
+.slider-bg {
+    z-index: 0;
+    transform: rotate(-20deg)!important;
+    top: -90vh;
+    left: -10vh;
+    opacity: .15;
+    filter:  blur(120px) saturate(10);
+}
+
+.slider-bg.slider-item {
+    min-height: 100vh;
+}
+
+.slider-item.opened {
+    z-index: 2;
+    transform: rotate(-15deg) scale(1.45);
+    will-change: transform;
+    box-shadow: rgb(0 0 0 / .75) 0 0 0 10000px;
+}
+
+.description {
+    position: absolute;
+    font-size: calc(var(--index) * .8);
+    top: 20vh;
+    left: 8vw;
+    max-width: 24vw;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.description p {
+    opacity: .9;
+    transition: transform var(--transition);
+    transition-duration: 3s;
+}
+
+.description.hidden {
+    opacity: 0;
+    transform: translateY(5vh);
+}
+
+.description.hidden p {
+    transform: translateY(2vh);
+}
+
+.logo {
+    height: calc(var(--index) * 3.5);
+    font-size: calc(var(--index) * 3);
+    font-weight: 900;
+    display: inline-block;
+    background: linear-gradient(45deg, darkmagenta, tomato, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;;
 }
